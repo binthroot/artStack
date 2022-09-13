@@ -1,23 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/output.css" />
     <title>Document</title>
-</head>
-<body>
-    <% if (locals.messages.errors) { %>
-        <% messages.errors.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
-        <% }) %>    
-    <% } %>
-    <form action="/signup" method="POST">
+  </head>
+
+  <!-- <form action="/signup" method="POST">
         <input type="text" name="userName" placeholder="User Name">
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
         <input type="password" name="confirmPassword" placeholder="Confirm Password">
         <input type="submit">
-    </form>
-</body>
+    </form> -->
+
+  <body class="bg-gray-100">
+    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+    <div class="alert alert-danger"><%= el.msg %></div>
+    <% }) %> <% } %>
+
+    <nav class="flex items-center justify-between flex-wrap bg-blue-400 p-6">
+      <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <span class="font-semibold text-xl tracking-tight">The Art Stack</span>
+      </div>
+      <div class="block lg:hidden">
+        <button
+          class="flex items-center px-3 py-2 border rounded text-blue-200 border-blue-400 hover:text-white hover:border-white"
+        >
+          <svg
+            class="fill-current h-3 w-3"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+      </div>
+      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div class="text-sm lg:flex-grow">
+          <a
+            href="/login"
+            class="block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4"
+          >
+            Login
+          </a>
+          <a
+            href="/signup"
+            class="block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4"
+          >
+            Sign Up
+          </a>
+          <a
+            href="/learnmore"
+            class="block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white"
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Container -->
+    <div class="container mx-auto">
+      <div class="flex justify-center px-6 my-12">
+        <!-- Row -->
+        <div class="w-full xl:w-3/4 lg:w-11/12 flex">
+          <!-- Col -->
+          <div
+            class="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
+            style="
+              background-image: url('https://source.unsplash.com/Mv9hjnEUHR4/600x800');
+            "
+          ></div>
+          <!-- Col -->
+          <div
+            class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none"
+          >
+            <h3 class="pt-4 text-2xl text-center">Create an Account!</h3>
+            <form
+              class="px-8 pt-6 pb-8 mb-4 bg-white rounded"
+              action="/signup"
+              method="POST"
+            >
+              <div class="mb-4 md:flex md:justify-between">
+                <div class="mb-4 md:mr-2 md:mb-0">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="firstName"
+                  >
+                    First Name
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    name="firstName"
+                    id="firstName"
+                    type="text"
+                    placeholder="First Name"
+                  />
+                </div>
+                <div class="md:ml-2">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="lastName"
+                  >
+                    Last Name
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    name="lastName"
+                    id="lastName"
+                    type="text"
+                    placeholder="Last Name"
+                  />
+                </div>
+              </div>
+              <div class="mb-4">
+                <label
+                  class="block mb-2 text-sm font-bold text-gray-700"
+                  for="userName"
+                >
+                  Username
+                </label>
+                <input
+                  class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                  name="userName"
+                  id="userName"
+                  type="userName"
+                  placeholder="Username"
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  class="block mb-2 text-sm font-bold text-gray-700"
+                  for="email"
+                >
+                  Email
+                </label>
+                <input
+                  class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                  name="email"
+                  id="email"
+                  type="email"
+                  placeholder="Email"
+                />
+              </div>
+              <div class="mb-4 md:flex md:justify-between">
+                <div class="mb-4 md:mr-2 md:mb-0">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="password"
+                  >
+                    Password
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border border-red-500 rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    name="password"
+                    id="password"
+                    type="password"
+                    placeholder="******************"
+                  />
+                  <p class="text-xs italic text-red-500">
+                    Please choose a password.
+                  </p>
+                </div>
+                <div class="md:ml-2">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="c_password"
+                  >
+                    Confirm Password
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    name="confirmPassword"
+                    id="c_password"
+                    type="password"
+                    placeholder="******************"
+                  />
+                </div>
+              </div>
+              <div class="mb-6 text-center">
+                <button
+                  class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                  type="submit"
+                >
+                  Register Account
+                </button>
+              </div>
+              <hr class="mb-6 border-t" />
+              <div class="text-center">
+                <a
+                  class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                  href="#"
+                >
+                  Forgot Password?
+                </a>
+              </div>
+              <div class="text-center">
+                <a
+                  class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                  href="./login.html"
+                >
+                  Already have an account? Login!
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
